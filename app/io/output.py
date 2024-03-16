@@ -14,7 +14,7 @@ def write_to_console(text):
     print(text)
 
 
-def write_file(file, path):
+def write_file(text, path):
     """
     A function for writing text to a file with any extension.
 
@@ -22,14 +22,14 @@ def write_file(file, path):
         The function uses built-in python capabilities to write to a file.
 
     Args:
-        file (str): What you want to write to the file.
+        text (str): What you want to write to the file.
         path (str): The path to the file.
     """
     with open(path, 'w') as file:
-        file.write(file)
+        file.write(text)
 
 
-def write_file_with_pandas(file, path):
+def write_file_with_pandas(df, path):
     """
      The function writes lists, directories, etc. to a file.
 
@@ -37,12 +37,12 @@ def write_file_with_pandas(file, path):
          Uses pandas to write data to .csv and .json files.
 
     Args:
-        file (pd.DataFrame): Data to be written to a file (representing a table).
+        df (pd.DataFrame): Data to be written to a file (representing a table).
         path (str): The path to the file.
     """
     dot_name = path.split('.')[-1]
 
     if dot_name == 'csv':
-        file.to_csv(path, index=False)
+        df.to_csv(path)
     elif dot_name == 'json':
-        file.to_json(path)
+        df.to_json(path)
