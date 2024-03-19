@@ -43,6 +43,6 @@ def write_file_with_pandas(df, path):
     dot_name = path.split('.')[-1]
 
     if dot_name == 'csv':
-        df.to_csv(path)
+        df.to_csv(path, index=False)
     elif dot_name == 'json':
         df.to_json(path)

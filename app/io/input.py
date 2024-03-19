@@ -30,7 +30,14 @@ def read_file(path):
 
     Returns:
         (str): Data from a file.
+
+    Raises:
+        TypeError: If "path" is not str.
+        FileNotFoundError: If "path" is not a path to a file.
     """
+    if not isinstance(path, str):
+        raise TypeError('path must be a str')
+
     with open(path) as file:
         data = file.read()
     return data
@@ -49,6 +56,9 @@ def read_file_with_pandas(path):
     Returns:
         (pd.DataFrame): Data from a file that represents a table.
         Returns None if the path points to a file other than .csv and .json.
+
+    Raises:
+        (FileNotFoundError): If the file at the specified "path" does not exist or cannot be found.
     """
     dot_name = path.split('.')[-1]
     data = None
